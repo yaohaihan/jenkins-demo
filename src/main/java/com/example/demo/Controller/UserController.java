@@ -6,6 +6,7 @@ import com.example.demo.Entity.User;
 import com.example.demo.Service.UserService;
 import com.example.demo.Utils.JwtUtil;
 import com.example.demo.Utils.Result;
+import com.example.demo.Utils.ThreadLocalUtil;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -25,6 +26,12 @@ import java.util.Objects;
 public class UserController {
     @Autowired
     private UserService userService;
+
+
+    @PostMapping("/ResetPwd")
+    public Result ResetPwd() {
+        Map<String, Object> result = ThreadLocalUtil.get();
+    }
 
 
     @PostMapping("/addUser")
