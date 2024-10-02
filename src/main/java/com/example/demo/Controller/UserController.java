@@ -6,6 +6,8 @@ import com.example.demo.Entity.User;
 import com.example.demo.Service.UserService;
 import com.example.demo.Utils.JwtUtil;
 import com.example.demo.Utils.Result;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import com.example.demo.Utils.ThreadLocalUtil;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -23,6 +25,7 @@ import java.util.Objects;
 
 @RestController
 @RequestMapping("/users")
+@Tag(name = "用户相关接口")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -34,6 +37,7 @@ public class UserController {
     }
 
 
+    @Operation(summary = "增加用户")
     @PostMapping("/addUser")
     public Result addUser(@ModelAttribute @Validated UserDTO userDTO, @RequestParam MultipartFile avatorPic) throws IOException {
         byte[]avator = avatorPic.getBytes();
@@ -45,6 +49,7 @@ public class UserController {
         return Result.success();
     }
 
+    @Operation(summary = "登录功能")
     @GetMapping("/login")
     public Result login(@RequestParam String email, @RequestParam String password){
         User user = userService.getUserByEmail(email);
