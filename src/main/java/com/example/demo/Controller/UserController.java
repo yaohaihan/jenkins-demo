@@ -31,10 +31,10 @@ public class UserController {
     private UserService userService;
 
 
-    @PostMapping("/ResetPwd")
-    public Result ResetPwd() {
-        Map<String, Object> result = ThreadLocalUtil.get();
-    }
+//    @PostMapping("/ResetPwd")
+//    public Result ResetPwd() {
+//        Map<String, Object> result = ThreadLocalUtil.get();
+//    }
 
 
     @Operation(summary = "增加用户")
