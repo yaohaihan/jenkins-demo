@@ -2,11 +2,16 @@ spring:
   application:
     name: demo
 
-
   datasource:
     url: jdbc:mysql://localhost:3306/nusteamproject1
     username: root
-    password: 1234
+    password: Zbw01020304
+  data:
+    redis:
+      password: 1234
+      host: 13.229.95.80
+      port: 6379
+      database: 0
 
 mybatis:
   configuration:
@@ -29,6 +34,7 @@ knife4j:
   enable: true
   setting:
     language: zh_cn
+
 
 
 

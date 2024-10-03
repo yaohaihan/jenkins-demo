@@ -1,14 +1,21 @@
 package com.example.demo.Config;
 
+import com.example.demo.Interceptor.LoginInterceptor;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 @Configuration
-public class WebConfig {
+public class WebConfig implements WebMvcConfigurer {
+
+    @Autowired
+    LoginInterceptor loginInterceptor;
 
     @Bean
     public OpenAPI springShopOpenApi() {
@@ -25,4 +32,10 @@ public class WebConfig {
 
     }
 
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+//        WebMvcConfigurer.super.addInterceptors(registry);
+        registry.addInterceptor(loginInterceptor)
+                .excludePathPatterns("/users/login","users/adduser");
+    }
 }
