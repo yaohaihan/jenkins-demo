@@ -1,4 +1,5 @@
 pipeline {
+  agent {
     kubernetes {
           yaml '''
             apiVersion: v1
@@ -20,7 +21,8 @@ pipeline {
                 - ${computer.name}
             '''
           retries 2
-        }
+    }
+  }
     stages {
         stage('Checkout') {
             steps {
