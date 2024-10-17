@@ -1,26 +1,6 @@
 pipeline {
   agent {
-    kubernetes {
-          yaml '''
-            apiVersion: v1
-            kind: Pod
-            metadata:
-              namespace: jenkins
-              labels:
-                some-label: some-label-value
-            spec:
-              containers:
-              - name: maven
-                image: maven:3.9.9-eclipse-temurin-17
-              - name: busybox
-                image: busybox
-              - name: jnlp
-                image: jenkins/inbound-agent:latest
-                args:
-                - ${computer.jnlpmac}
-                - ${computer.name}
-            '''
-          retries 2
+    label 'agent2'
     }
   }
     stages {
