@@ -1,7 +1,7 @@
 pipeline {
   agent {
     label 'agent2'
-    }
+    
   }
 
     stages {
